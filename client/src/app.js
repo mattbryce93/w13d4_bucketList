@@ -1,3 +1,6 @@
+// const Request = require('./services/request.js');
+const MapWrapper = require('./services/mapWrapper.js');
+
 const makeRequest = function (url, callback) {
   const request = new XMLHttpRequest();
   request.open("GET", url);
@@ -23,9 +26,10 @@ const populateList = function (countries) {
 };
 
 const app = function(){
-  const url = 'https://restcountries.eu/rest/v2/all';
+  const mapWrapper = new MapWrapper("map", 55.8642, 4.2518, 10);
 
+  const url = 'https://restcountries.eu/rest/v2/all';
   makeRequest(url, requestComplete);
 };
 
-document.addEventListener('DOMContentLoaded', app);
+window.addEventListener('load', app);
