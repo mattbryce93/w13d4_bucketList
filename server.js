@@ -20,12 +20,66 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client) {
   console.log('Connected to database');
 
   // CREATE route
+  server.post('/api/countries', function(req, res){
+    const countries = db.collection('countries');
+    const countryToSave = req.body;
+    countries.save(countryToSave, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send()
+      }
+      console.log('Country saved to database');
+      res.status(201)
+      res.json(result.ops[0]);
+    })
+  })
 
-  // READ route
+  // READ ALL route
+  server.get('/api/countries', function(req, res){
+    const countries = db.collection('countries');
+    countries.find().toArray(function(err, allCountries){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send()
+      }
+      res.json(allCountries)
+    })
+  })
 
-  // DELETE route
+  // DELETE ALL route
+  server.delete('/api/countries', function(req, res){
+    const filterObject = {}
+    const countries = db.collection('countries');
+    countries.deleteMany(filterObject, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send()
+      }
+      res.status(204)
+      res.send()
+    })
+  })
 
   // UPDATE route
+
+  server.put('/api/countries/:id', function(req, res){
+    const countries = db.collection('countries');
+    const objectID = ObjectID(req.params.id)
+    const filterObject = {_id: objectID}
+    const updatedCountry = req.body;
+    countries.update(filterObject, updatedCountry, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send()
+      }
+      res.status(204)
+      res.send()
+    })
+  })
 
   server.listen(3000, function(){
     console.log("Listening on port 3000");

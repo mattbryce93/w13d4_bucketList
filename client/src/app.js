@@ -19,6 +19,7 @@ const populateList = function (countries) {
     option.innerText = country.name;
     option.value = index;
     select.appendChild(option);
+    
   });
 };
 
