@@ -1,0 +1,29 @@
+{
+  "name": "w13d4_bucketList",
+  "version": "1.0.0",
+  "description": "- Use the rest countries API to get the countries of the world. - Add countries to a bucket list. - Persist this list using Mongo. - Try to split your client code into models and views. Think about the responsibilities of each.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriflorence/w13d4_bucketList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriflorence/w13d4_bucketList/issues"
+  },
+  "homepage": "https://github.com/adriflorence/w13d4_bucketList#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}
