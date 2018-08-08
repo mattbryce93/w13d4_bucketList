@@ -4,7 +4,9 @@
   "description": "- Use the rest countries API to get the countries of the world. - Add countries to a bucket list. - Persist this list using Mongo. - Try to split your client code into models and views. Think about the responsibilities of each.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
