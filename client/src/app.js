@@ -11,9 +11,17 @@ const populateDropDown = function(countries){
   dropDown.populate(countries);
 };
 
+const getCountry = function (countries) {
+  let select = document.getElementById('country-list');
+  select.addEventListener('change', function() {
+    const selected = countries[this.value];
+  });
+};
+
 const app = function(){
-  const mapWrapper = new MapWrapper("map", 55.8642, 4.2518, 10);
+  const mapWrapper = new MapWrapper("map", 55.8642, -4.2518, 10);
   countryRequest.get(populateDropDown);
+  getCountry();
 };
 
 window.addEventListener('load', app);
