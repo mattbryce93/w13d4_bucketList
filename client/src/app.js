@@ -1,31 +1,17 @@
-const makeRequest = function (url, callback) {
-  const request = new XMLHttpRequest();
-  request.open("GET", url);
-  request.addEventListener('load', callback);
-  request.send();
-};
+const Request = require('./services/request');
+const ListView = require('./views/listView');
+const DropDown = require('./views/dropDown');
 
-const requestComplete = function () {
-  if(this.status !== 200) return;
-  const jsonString = this.responseText;
-  const countries = JSON.parse(jsonString);
-  populateList(countries);
-};
+const countryRequest = new Request('https://restcountries.eu/rest/v2/all');
+const dbRequest = new Request('http://localhost:3000/api/countries');
+const dropDown = new DropDown();
 
-const populateList = function (countries) {
-  let select = document.getElementById('country-list');
-  countries.forEach(function(country, index) {
-    let option = document.createElement('option');
-    option.innerText = country.name;
-    option.value = index;
-    select.appendChild(option);
-  });
+const populateDropDown = function(countries){
+  dropDown.populate(countries);
 };
 
 const app = function(){
-  const url = 'https://restcountries.eu/rest/v2/all';
-
-  makeRequest(url, requestComplete);
+  countryRequest.get(populateDropDown);
 };
 
 document.addEventListener('DOMContentLoaded', app);
