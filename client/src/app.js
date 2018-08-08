@@ -1,18 +1,31 @@
-const CountryView = require('./views/countryView');
-const Request = require('./services/request.js');
-
-const countryView = new CountryView();
-const request = new Request("https://restcountries.eu/rest/v2/all");
-
-const getCountriesRequestComplete = function(allCountries){
-  for(let country of allCountries){
-    countryView.addCountry(country);
-  }
+const makeRequest = function (url, callback) {
+  const request = new XMLHttpRequest();
+  request.open("GET", url);
+  request.addEventListener('load', callback);
+  request.send();
 };
 
-const appStart = function(){
-  console.log("started");
-  request.get(getCountriesRequestComplete);
+const requestComplete = function () {
+  if(this.status !== 200) return;
+  const jsonString = this.responseText;
+  const countries = JSON.parse(jsonString);
+  populateList(countries);
 };
 
-document.addEventListener('DOMContentLoaded', appStart);
+const populateList = function (countries) {
+  let select = document.getElementById('country-list');
+  countries.forEach(function(country, index) {
+    let option = document.createElement('option');
+    option.innerText = country.name;
+    option.value = index;
+    select.appendChild(option);
+  });
+};
+
+const app = function(){
+  const url = 'https://restcountries.eu/rest/v2/all';
+
+  makeRequest(url, requestComplete);
+};
+
+document.addEventListener('DOMContentLoaded', app);
