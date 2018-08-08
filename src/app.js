@@ -9,12 +9,17 @@ const requestComplete = function () {
   if(this.status !== 200) return;
   const jsonString = this.responseText;
   const countries = JSON.parse(jsonString);
-  // populateList(countries);
+  populateList(countries);
 };
 
 const populateList = function (countries) {
-  // populate dropdown
-  // select id="countries"
+  let select = document.getElementById('country-list');
+  countries.forEach(function(country, index) {
+    let option = document.createElement('option');
+    option.innerText = country.name;
+    option.value = index;
+    select.appendChild(option);
+  });
 };
 
 const app = function(){
