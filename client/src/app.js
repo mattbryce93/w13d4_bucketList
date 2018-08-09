@@ -18,10 +18,23 @@ const populateList = function(listItems){
   }
 };
 
+<<<<<<< HEAD
 const createRequestComplete = function(newCountry){
   listView.addCountry(newCountry);
 }
 
+=======
+const clearList = function(event){
+  event.preventDefault();
+  dbRequest.delete(clearListRequestComplete);
+}
+
+const clearListRequestComplete = function(){
+  listView.clear();
+};
+
+
+>>>>>>> e3a1a2c48a309535173f9bfad94d71f5b6f0e5d7
 const addCountry = function(event){
   event.preventDefault();
   const selectedCountry = document.querySelector('#country-list').selectedOptions[0];
@@ -41,6 +54,8 @@ const app = function(){
   dbRequest.get(populateList);
   const addCountryButton = document.querySelector('#submit-country');
   addCountryButton.addEventListener('click', addCountry);
+  const deleteAllButton = document.querySelector('#clear-list');
+  deleteAllButton.addEventListener('click', clearList);
 };
 
 window.addEventListener('load', app);
