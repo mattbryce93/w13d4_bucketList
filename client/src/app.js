@@ -8,6 +8,9 @@ const dbRequest = new Request('http://localhost:3000/api/countries');
 const dropDown = new DropDown();
 const listView = new ListView();
 
+var mapWrapper;
+
+
 const populateDropDown = function(countries){
   dropDown.populate(countries);
 };
@@ -33,7 +36,8 @@ const clearListRequestComplete = function(){
 
 const addCountryToDB = function(event){
   event.preventDefault();
-  const selectedCountry = document.querySelector('#country-list').selectedOptions[0];
+  const selectedCountry = document.querySelector('#country-list').selectedOptions[0]
+  mapWrapper.colorCountry(selectedCountry);
   const newCountry = {
     "name": selectedCountry.innerText,
     "lat" : selectedCountry.attributes.lat.value,
@@ -43,7 +47,7 @@ const addCountryToDB = function(event){
 };
 
 const app = function(){
-  const mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 10);
+  mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 2);
   countryRequest.get(populateDropDown);
   dbRequest.get(populateList);
   const addCountryButton = document.querySelector('#submit-country');

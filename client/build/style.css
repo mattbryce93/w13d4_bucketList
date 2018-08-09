@@ -1,4 +1,32 @@
+body {
+  background: url('./img/background.jpg');
+}
+
+#container {
+
+}
+
 #map {
-  height: 300px;
-  width: 300px;
+  height: 600px;
+  width: 800px;
+}
+
+#frame {
+  background: url('./img/frame.png');
+  background-size: cover;
+  padding: 30px;
+}
+
+#flex-container {
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#countries {
+  width: 260px;
+  background-color: #F0E7D8;
+  padding: 20px;
+  text-align: center;
 }
