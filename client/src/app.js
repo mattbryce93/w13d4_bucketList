@@ -18,9 +18,20 @@ const populateList = function(listItems){
   }
 };
 
+const createRequestComplete = function(newCountry){
+  listView.addCountry(newCountry);
+}
+
 const addCountry = function(event){
   event.preventDefault();
-  const selectedCountry = document.querySelector('#country-list').selectedOptions[0].innerText;
+  const selectedCountry = document.querySelector('#country-list').selectedOptions[0];
+  const newCountry = {
+    "name": selectedCountry.innerText,
+    "lat" : selectedCountry.attributes.lat.value,
+    "lng" : selectedCountry.attributes.lng.value
+  }
+  dbRequest.post(createRequestComplete, newCountry);
+
   console.log(selectedCountry);
 };
 
