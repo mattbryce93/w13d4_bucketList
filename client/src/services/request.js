@@ -41,4 +41,19 @@ Request.prototype.delete = function (callback) {
   request.send();
 };
 
+Request.prototype.deleteOne = function(itemID, callback){
+  const request = new XMLHttpRequest();
+  let url = `${this.url}/${itemID}`;
+  console.log(url);
+  request.open("DELETE", url);
+  request.addEventListener('load', function(){
+    if(this.status != 204){
+      return;
+    }
+    callback(itemID);
+  })
+  console.log(request);
+  request.send();
+};
+
 module.exports = Request;
