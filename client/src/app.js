@@ -40,8 +40,6 @@ const addCountry = function(event){
     "lng" : selectedCountry.attributes.lng.value
   }
   dbRequest.post(createRequestComplete, newCountry);
-
-  console.log(selectedCountry);
 };
 
 const app = function(){
