@@ -11,7 +11,6 @@ const MapWrapper = function (element, lat, lng, zoom) {
 }
 
 MapWrapper.prototype.colorCountry = function (selectedCountry) {
-  console.log(selectedCountry.attributes.alpha.value);
   countryLayers.eachLayer(function (layer) {
     if (layer.feature.id == selectedCountry.attributes.alpha.value) {
       layer.setStyle({fillColor: "red"});
