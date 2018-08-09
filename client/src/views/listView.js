@@ -16,7 +16,12 @@ ListView.prototype.clear = function() {
 ListView.prototype.render = function(country){
     const ul = document.querySelector('#countries');
     const li = document.createElement('li');
+    const deleteButton = document.createElement('button');
     li.innerText = country.name;
+    deleteButton.innerText = "DELETE";
+    deleteButton.setAttribute('class', 'country-delete');
+    deleteButton.setAttribute('data-country', country.name);
+    li.appendChild(deleteButton);
     ul.appendChild(li);
 }
 

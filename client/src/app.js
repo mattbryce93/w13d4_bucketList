@@ -31,6 +31,10 @@ const clearListRequestComplete = function(){
   listView.clear();
 };
 
+const deleteListItem = function(){
+  console.log('deleteListItem');
+};
+
 const addCountry = function(event){
   event.preventDefault();
   const selectedCountry = document.querySelector('#country-list').selectedOptions[0];
@@ -52,6 +56,7 @@ const app = function(){
   addCountryButton.addEventListener('click', addCountry);
   const deleteAllButton = document.querySelector('#clear-list');
   deleteAllButton.addEventListener('click', clearList);
+  const deleteButtons = document.querySelectorAll('button.country-delete')
 };
 
 window.addEventListener('load', app);
