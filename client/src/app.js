@@ -18,6 +18,7 @@ const populateDropDown = function(countries){
 const populateList = function(listItems){
   for(let country of listItems){
     listView.addCountryToList(country);
+    mapWrapper.populateCountry(country);
   }
 };
 
@@ -36,12 +37,13 @@ const clearListRequestComplete = function(){
 
 const addCountryToDB = function(event){
   event.preventDefault();
-  const selectedCountry = document.querySelector('#country-list').selectedOptions[0]
+  const selectedCountry = document.querySelector('#country-list').selectedOptions[0];
   mapWrapper.colorCountry(selectedCountry);
   const newCountry = {
     "name": selectedCountry.innerText,
     "lat" : selectedCountry.attributes.lat.value,
-    "lng" : selectedCountry.attributes.lng.value
+    "lng" : selectedCountry.attributes.lng.value,
+    "alpha" : selectedCountry.attributes.alpha.value
   }
   dbRequest.post(createRequestComplete, newCountry);
 };

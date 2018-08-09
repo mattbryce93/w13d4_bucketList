@@ -11,9 +11,16 @@ const MapWrapper = function (element, lat, lng, zoom) {
 }
 
 MapWrapper.prototype.colorCountry = function (selectedCountry) {
-
   countryLayers.eachLayer(function (layer) {
-    if (layer.feature.properties.name == selectedCountry.innerText) {
+    if (layer.feature.id == selectedCountry.attributes.alpha.value) {
+      layer.setStyle({fillColor: "red"});
+    }
+  });
+};
+
+MapWrapper.prototype.populateCountry = function (selectedCountry) {
+  countryLayers.eachLayer(function (layer) {
+    if (layer.feature.id == selectedCountry.alpha) {
       layer.setStyle({fillColor: "red"});
     }
   });
