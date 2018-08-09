@@ -16,9 +16,7 @@ ListView.prototype.clear = function() {
 ListView.prototype.render = function(country){
     const ul = document.querySelector('#countries');
     const li = document.createElement('li');
-    const text = document.createElement('p');
-    text.innerText = country;
-    li.appendChild(text);
+    li.innerText = country.name;
     ul.appendChild(li);
 }
 

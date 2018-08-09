@@ -9,6 +9,8 @@ DropDown.prototype.populate = function(countries) {
     option.innerText = country.name;
     option.value = index;
     select.appendChild(option);
+    option.setAttribute("lat", country.latlng[0]);
+    option.setAttribute("lng", country.latlng[1]);
   });
 };
 

@@ -8,6 +8,8 @@ const dbRequest = new Request('http://localhost:3000/api/countries');
 const dropDown = new DropDown();
 const listView = new ListView();
 
+var mapWrapper;
+
 
 const populateDropDown = function(countries){
   dropDown.populate(countries);
@@ -19,21 +21,40 @@ const populateList = function(listItems){
   }
 };
 
+const createRequestComplete = function(newCountry){
+  listView.addCountry(newCountry);
+}
+
+const clearList = function(event){
+  event.preventDefault();
+  dbRequest.delete(clearListRequestComplete);
+}
+
+const clearListRequestComplete = function(){
+  listView.clear();
+};
+
 const addCountry = function(event){
   event.preventDefault();
-  const selectedCountryID = document.querySelector('#country-list').selectedOptions[0].value;
-  console.log(selectedCountryID);
-
+  const selectedCountry = document.querySelector('#country-list').selectedOptions[0]
+  mapWrapper.colorCountry(selectedCountry);
+  const newCountry = {
+    "name": selectedCountry.innerText,
+    "lat" : selectedCountry.attributes.lat.value,
+    "lng" : selectedCountry.attributes.lng.value
+  }
+  dbRequest.post(createRequestComplete, newCountry);
+  // console.log(selectedCountry);
 };
 
 const app = function(){
-  const mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 3);
+  mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 2);
   countryRequest.get(populateDropDown);
   dbRequest.get(populateList);
-  // console.log(country_borders);
-  //add listener for button click
   const addCountryButton = document.querySelector('#submit-country');
   addCountryButton.addEventListener('click', addCountry);
+  const deleteAllButton = document.querySelector('#clear-list');
+  deleteAllButton.addEventListener('click', clearList);
 };
 
 window.addEventListener('load', app);

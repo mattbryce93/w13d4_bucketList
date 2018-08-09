@@ -14,18 +14,28 @@
   <script src="bundle.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>bucketList</h1>
-    <form>
-      <select id="country-list">
+  <h1>bucketList</h1>
+  <div id="container">
+    <section id="form">
+      <form>
+        <select id="country-list">
 
-      </select>
-      <button type="submit" id="submit-country">Add country</button>
-    </form>
+        </select>
+        <button type="submit" id="submit-country">Add country</button>
+        <button type="submit" id="clear-list">Clear list</button>
+      </form>
+    </section>
+    <div id="flex-container">
+      <section id="frame">
+        <section id="map">
 
+        </section>
+      </section>
+      <section id="countries">
+        <h1> Places I want to visit </h1>
+      </section>
+    </div>
   </div>
-  <div id="map">
 
-  </div>
 </body>
 </html>
