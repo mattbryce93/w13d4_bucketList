@@ -63,6 +63,24 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client) {
     })
   })
 
+// DELETE ONE country
+
+  server.delete('/api/countries/:id', function(req, res){
+    const countries = db.collection('countries');
+    const objectID = ObjectID(req.params.id);
+    const filterObject = {_id: objectID};
+    countries.deleteOne(filterObject, function(err, result){
+      if(err){
+        console.log(err);
+        res.status(500);
+        res.send();
+      }
+      console.log('Deleted object in database');
+      res.status(204);
+      res.send();
+    })
+  });
+
   // UPDATE route
 
   server.put('/api/countries/:id', function(req, res){
