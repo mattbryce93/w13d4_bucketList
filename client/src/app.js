@@ -28,7 +28,6 @@ const app = function(){
   const mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 10);
   countryRequest.get(populateDropDown);
   dbRequest.get(populateList);
-  //add listener for button click
   const addCountryButton = document.querySelector('#submit-country');
   addCountryButton.addEventListener('click', addCountry);
 };
