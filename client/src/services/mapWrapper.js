@@ -13,7 +13,7 @@ const MapWrapper = function (element, lat, lng, zoom) {
 MapWrapper.prototype.colorCountry = function (selectedCountry) {
 
   countryLayers.eachLayer(function (layer) {
-    if (layer.feature.properties.name == selectedCountry.) {
+    if (layer.feature.properties.name == selectedCountry.innerText) {
       layer.setStyle({fillColor: "red"});
     }
   });
