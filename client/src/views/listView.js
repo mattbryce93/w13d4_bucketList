@@ -28,6 +28,9 @@ const deleteListItem = function(){
 ListView.prototype.render = function(){
     const ul = document.querySelector('#countries');
     ul.innerHTML = '';
+    const heading = document.createElement('h1');
+    heading.innerText = "Place I want to Visit";
+    ul.appendChild(heading);
     for(let country of this.countries){
     const li = document.createElement('li');
     const deleteButton = document.createElement('button');
@@ -43,8 +46,11 @@ ListView.prototype.render = function(){
     deleteButton.id = country._id;
     deleteButton.setAttribute('data-country', country.name);
     deleteButton.addEventListener('click', deleteListItem);
+
     li.appendChild(deleteButton);
     ul.appendChild(li);
+
+
   }
 }
 
