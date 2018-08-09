@@ -32,6 +32,11 @@ ListView.prototype.render = function(){
     const li = document.createElement('li');
     const deleteButton = document.createElement('button');
     li.innerText = country.name;
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.name = `${country.name}`;
+    checkbox.value = `${country.name}`;
+    li.appendChild(checkbox);
     li.id = country.name;
     deleteButton.innerText = "DELETE";
     deleteButton.setAttribute('class', 'country-delete');
