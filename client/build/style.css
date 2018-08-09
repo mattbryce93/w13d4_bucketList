@@ -2,8 +2,9 @@ body {
   background: url('./img/background.jpg');
 }
 
-#container {
-
+#logo {
+  width: 100%;
+  background-color: black;
 }
 
 #map {
