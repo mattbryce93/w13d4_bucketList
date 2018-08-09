@@ -18,4 +18,12 @@ MapWrapper.prototype.colorCountry = function (selectedCountry) {
   });
 };
 
+MapWrapper.prototype.populateCountry = function (selectedCountry) {
+  countryLayers.eachLayer(function (layer) {
+    if (layer.feature.id == selectedCountry.alpha) {
+      layer.setStyle({fillColor: "red"});
+    }
+  });
+};
+
 module.exports = MapWrapper;

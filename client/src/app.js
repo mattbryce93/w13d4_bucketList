@@ -18,6 +18,7 @@ const populateDropDown = function(countries){
 const populateList = function(listItems){
   for(let country of listItems){
     listView.addCountryToList(country);
+    mapWrapper.populateCountry(country);
   }
 };
 
