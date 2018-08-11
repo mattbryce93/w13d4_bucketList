@@ -1,4 +1,5 @@
 const Request = require('../services/request');
+const MapWrapper = require('../services/mapWrapper.js');
 
 var ListView = function(){
   this.countries = [];
@@ -6,7 +7,6 @@ var ListView = function(){
 
 ListView.prototype.addCountryToList = function(country) {
   this.countries.push(country);
-  this.render();
 }
 
 ListView.prototype.clear = function() {
@@ -22,10 +22,11 @@ const deleteOneRequestComplete = function(itemID){
 
 const deleteListItem = function(){
   const dbRequest = new Request('http://localhost:3000/api/countries');
-  dbRequest.deleteOne(this.id, deleteOneRequestComplete);
+  dbRequest.deleteOne(deleteButton.id, deleteOneRequestComplete);
+  let selectedCountry = deleteButton.attributes.datacountry.value;
 };
 
-ListView.prototype.render = function(){
+ListView.prototype.render = function(deleteColour){
     const ul = document.querySelector('#countries');
     ul.innerHTML = '';
     for(let country of this.countries){
@@ -41,7 +42,7 @@ ListView.prototype.render = function(){
     deleteButton.innerText = "DELETE";
     deleteButton.setAttribute('class', 'country-delete');
     deleteButton.id = country._id;
-    deleteButton.setAttribute('data-country', country.name);
+    deleteButton.setAttribute('datacountry', country.name);
     deleteButton.addEventListener('click', deleteListItem);
     li.appendChild(deleteButton);
     ul.appendChild(li);

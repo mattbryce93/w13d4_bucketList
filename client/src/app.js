@@ -46,6 +46,11 @@ const addCountryToDB = function(event){
   dbRequest.post(createRequestComplete, newCountry);
 };
 
+const clearColorFromMap = function(selectedCountry) {
+  console.log(selectedCountry);
+  console.log(mapWrapper);
+};
+
 const app = function(){
   mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 2);
   countryRequest.get(populateDropDown);
