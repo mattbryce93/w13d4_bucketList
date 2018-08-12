@@ -50,6 +50,10 @@ const addCountryToDB = function(event){
 
 const app = function(){
   mapWrapper = new MapWrapper("map", 55.864237, -4.251806, 2);
+  document.addEventListener("removeCountry", function(event) {
+    console.log(event);
+    mapWrapper.deleteColour(event.detail.countryToRemove);
+  });
   countryRequest.get(populateDropDown);
   dbRequest.get(populateList);
   const addCountryButton = document.querySelector('#submit-country');
