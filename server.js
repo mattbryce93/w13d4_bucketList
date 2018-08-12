@@ -23,15 +23,23 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client) {
   server.post('/api/countries', function(req, res){
     const countries = db.collection('countries');
     const countryToSave = req.body;
-    countries.save(countryToSave, function(err, result){
+    countries.findOne(countryToSave, function(err, success){
       if(err){
         console.log(err);
-        res.status(500);
-        res.send()
+      } else {
+        if(success == null){
+          countries.save(countryToSave, function(err, result){
+            if(err){
+              console.log(err);
+              res.status(500);
+              res.send()
+            }
+            console.log('Country saved to database');
+            res.status(201)
+            res.json(result.ops[0]);
+          })
+        }
       }
-      console.log('Country saved to database');
-      res.status(201)
-      res.json(result.ops[0]);
     })
   })
 

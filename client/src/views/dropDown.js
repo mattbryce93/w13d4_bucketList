@@ -11,6 +11,7 @@ DropDown.prototype.populate = function(countries) {
     select.appendChild(option);
     option.setAttribute("lat", country.latlng[0]);
     option.setAttribute("lng", country.latlng[1]);
+    option.setAttribute("alpha", country.alpha3Code);
   });
 };
 
