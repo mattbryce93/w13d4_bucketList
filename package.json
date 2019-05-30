@@ -21,7 +21,7 @@
   "homepage": "https://github.com/adriflorence/w13d4_bucketList#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "mongodb": "^3.1.1"
   },
   "devDependencies": {
