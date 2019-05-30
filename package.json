@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/adriflorence/w13d4_bucketList#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "express": "^4.16.3",
     "mongodb": "^3.1.1"
   },
